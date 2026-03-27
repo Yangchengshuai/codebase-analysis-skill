@@ -6,8 +6,8 @@ Thank you for your interest in contributing! This guide will help you get starte
 
 ### Report Issues
 
-- **Bugs**: Use the [Bug Report](https://github.com/Ericskey/codebase-analysis-skill/issues/new?template=bug_report.md) template
-- **Features**: Use the [Feature Request](https://github.com/Ericskey/codebase-analysis-skill/issues/new?template=feature_request.md) template
+- **Bugs**: Use the [Bug Report](https://github.com/Yangchengshuai/codebase-analysis-skill/issues/new?template=bug_report.md) template
+- **Features**: Use the [Feature Request](https://github.com/Yangchengshuai/codebase-analysis-skill/issues/new?template=feature_request.md) template
 
 ### Submit Changes
 
@@ -29,7 +29,7 @@ Thank you for your interest in contributing! This guide will help you get starte
 
 ```bash
 # Clone
-git clone https://github.com/Ericskey/codebase-analysis-skill.git
+git clone https://github.com/Yangchengshuai/codebase-analysis-skill.git
 cd codebase-analysis-skill
 
 # Verify tools work

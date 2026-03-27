@@ -52,7 +52,7 @@ Point this skill at any codebase and it systematically produces publication-qual
 
 ```bash
 # Clone into your skills directory
-git clone https://github.com/Ericskey/codebase-analysis-skill.git \
+git clone https://github.com/Yangchengshuai/codebase-analysis-skill.git \
   ~/.claude/plugins/marketplaces/omc/skills/codebase-analysis
 ```
 
@@ -60,7 +60,7 @@ git clone https://github.com/Ericskey/codebase-analysis-skill.git \
 
 ```bash
 # Clone anywhere
-git clone https://github.com/Ericskey/codebase-analysis-skill.git
+git clone https://github.com/Yangchengshuai/codebase-analysis-skill.git
 # Then reference skill.md in your Claude Code configuration
 ```
 
@@ -220,7 +220,7 @@ Contributions are welcome! Here's how you can help:
 ### Development Setup
 
 ```bash
-git clone https://github.com/Ericskey/codebase-analysis-skill.git
+git clone https://github.com/Yangchengshuai/codebase-analysis-skill.git
 cd codebase-analysis-skill
 
 # Test verification tools
@@ -267,9 +267,9 @@ This project is licensed under the MIT License — see the [LICENSE](LICENSE) fi
 
 ## Acknowledgments
 
-- Inspired by the [fastlivo2-tech-docs](https://github.com/Ericskey/fastlivo2-tech-docs) documentation style
+- Inspired by the [fastlivo2-tech-docs](https://github.com/Yangchengshuai/fastlivo2-tech-docs) documentation style
 - Tested on [Voxel-SLAM](https://github.com/hku-mars/Voxel-SLAM) codebase
-- Built for [Claude Code](https://claude.ai/code) and [oh-my-claudecode](https://github.com/Ericskey/oh-my-claudecode)
+- Built for [Claude Code](https://claude.ai/code) and [oh-my-claudecode](https://github.com/Yangchengshuai/oh-my-claudecode)
 
 ---
 
@@ -292,7 +292,7 @@ This project is licensed under the MIT License — see the [LICENSE](LICENSE) fi
 
 ```bash
 # 安装
-git clone https://github.com/Ericskey/codebase-analysis-skill.git \
+git clone https://github.com/Yangchengshuai/codebase-analysis-skill.git \
   ~/.claude/plugins/marketplaces/omc/skills/codebase-analysis
 
 # 使用
