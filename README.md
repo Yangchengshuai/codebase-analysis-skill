@@ -267,6 +267,7 @@ This project is licensed under the MIT License — see the [LICENSE](LICENSE) fi
 
 ## Acknowledgments
 
+- Skill 制作方法论融合了 Anthropic 官方 Claude Code 团队工程师 **Thariq** 的内部分享：[Lessons from Building Claude Code: How We Use Skills](https://x.com/trq212/status/1903089182445183015)，包括 Gotchas 防坑机制、渐进披露、Description 触发条件等核心经验
 - Inspired by the [fastlivo2-tech-docs](https://github.com/Yangchengshuai/fastlivo2-tech-docs) documentation style
 - Tested on [Voxel-SLAM](https://github.com/hku-mars/Voxel-SLAM) codebase
 - Built for [Claude Code](https://claude.ai/code) and [oh-my-claudecode](https://github.com/yeachan-heo/oh-my-claudecode)
