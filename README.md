@@ -269,7 +269,7 @@ This project is licensed under the MIT License — see the [LICENSE](LICENSE) fi
 
 - Inspired by the [fastlivo2-tech-docs](https://github.com/Yangchengshuai/fastlivo2-tech-docs) documentation style
 - Tested on [Voxel-SLAM](https://github.com/hku-mars/Voxel-SLAM) codebase
-- Built for [Claude Code](https://claude.ai/code) and [oh-my-claudecode](https://github.com/Yangchengshuai/oh-my-claudecode)
+- Built for [Claude Code](https://claude.ai/code) and [oh-my-claudecode](https://github.com/yeachan-heo/oh-my-claudecode)
 
 ---
 
