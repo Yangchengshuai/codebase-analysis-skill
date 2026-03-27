@@ -172,7 +172,7 @@ verify_document() {
     echo
 
     # Process each VERIFY tag
-    echo "$verify_tags" | while read -r tag; do
+    while read -r tag; do
         # Parse tag: [VERIFY: file:line:col description]
         local content=$(echo "$tag" | sed 's/\[VERIFY: //; s/\]$//')
         local file=$(echo "$content" | cut -d: -f1)
@@ -191,7 +191,7 @@ verify_document() {
         if [ "$line" != "$desc" ]; then
             verify_line_number "$file" "$line"
         fi
-    done
+    done <<< "$verify_tags"
 
     echo
     echo "=========================================="

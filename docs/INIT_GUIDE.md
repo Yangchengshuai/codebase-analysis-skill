@@ -2,35 +2,38 @@
 
 > **Purpose**: How to analyze freshly git cloned codebases
 > **Date**: 2026-03-27
-> **Key Principle**: Skill should be standalone, no /init required
+> **Key Principle**: Skill auto-enhances context via /init if CLAUDE.md is missing, with graceful fallback to code-only analysis
 
 ---
 
-## Core Decision: No /init Required (不需要/init)
+## Core Decision: Auto-Enhance with /init, Graceful Fallback (自动增强，优雅降级)
 
-### Why No /init?
+### Strategy (v2.1)
 
-**❌ DON'T require /init because**:
+**✅ Auto-run /init if CLAUDE.md is missing, but NEVER fail if /init is unavailable**:
 
-1. **Breaks standalone capability**
-   - User should be able to: `git clone url → /codebase-analysis /path`
-   - No intermediate setup steps
+1. **Auto-enhancement**
+   - If CLAUDE.md missing → automatically run `/init` to generate it
+   - Provides better context: build commands, conventions, architecture
+   - One-time cost (~1-3 min), reused for subsequent analyses
 
-2. **Creates dependency**
-   - Depends on memory system
-   - Depends on search indexing
-   - Complex troubleshooting
+2. **Graceful fallback**
+   - If `/init` fails or is unavailable → continue with code-only analysis
+   - If `/init` produces poor CLAUDE.md → detect and ignore
+   - Analysis always completes regardless of /init success
 
-3. **Not necessary**
-   - Git repository has all needed information:
+3. **Standalone capability preserved**
+   - Git repository has all essential information:
      - Code structure (directories, files)
      - Build system (CMakeLists.txt, package.xml)
      - Git history (commits, branches)
      - Documentation (README.md)
+   - `/init` is an **enhancement**, not a **requirement**
 
 4. **User experience**
-   - Simpler = better
-   - "Just works" out of the box
+   - "Just works" out of the box — no manual /init needed
+   - Transparent: user sees what's happening during auto-/init
+   - Best quality by default (with CLAUDE.md) without extra steps
 
 ---
 
@@ -52,9 +55,15 @@
 │  │     context = read_CLAUDE_md()                       │   │
 │  │     use_context = True                                │   │
 │  │ else:                                                 │   │
-│  │     print("No CLAUDE.md found, using code structure")│   │
-│  │     context = None                                    │   │
-│  │     use_context = False                               │   │
+│  │     print("No CLAUDE.md - auto-running /init...")    │   │
+│  │     /init  # Auto-generate CLAUDE.md (v2.1)          │   │
+│  │     if exists(CLAUDE.md):                            │   │
+│  │         context = read_CLAUDE_md()                   │   │
+│  │         use_context = True                            │   │
+│  │     else:                                             │   │
+│  │         print("/init failed, using code structure")  │   │
+│  │         context = None                                │   │
+│  │         use_context = False                           │   │
 │  │ ✓ Continue analysis either way                        │   │
 │  └──────────────────────────────────────────────────────┘   │
 │                                                             │
@@ -252,28 +261,28 @@ EOF
 
 ---
 
-## Do Not Create CLAUDE.md (不要创建CLAUDE.md)
+## CLAUDE.md Handling (CLAUDE.md处理策略)
 
 ### Important Constraints
 
-❌ **DON'T** create CLAUDE.md in user's repo
-- Modifies user's codebase
-- May conflict with their version control
-- Unintended side effects
+✅ **DO** auto-generate CLAUDE.md via `/init` if missing
+- Only runs when CLAUDE.md doesn't exist
+- Uses `/init` (Claude Code native command) to generate
+- Transparent: user sees progress messages
 
-❌ **DON'T** prompt user to create CLAUDE.md
-- Adds unnecessary step
-- Breaks "just works" principle
-
-✅ **DO** work without CLAUDE.md
-- Skill is standalone
+✅ **DO** work without CLAUDE.md if /init fails
+- Skill is standalone — /init failure is non-fatal
 - Analysis based on code alone
-- CLAUDE.md is optional enhancement
+- Graceful fallback with clear messaging
+
+❌ **DON'T** prompt user to manually create CLAUDE.md
+- Auto-/init handles this transparently
+- No extra steps required from user
 
 ✅ **DO** document this in skill output
-- Mention CLAUDE.md was not found
-- Analysis based on code structure
-- User can create CLAUDE.md later if desired
+- Mention CLAUDE.md was auto-generated or not found
+- Analysis proceeds either way
+- User can regenerate CLAUDE.md later if needed
 
 ---
 
@@ -298,13 +307,13 @@ EOF
 ### Phase 0: Context Detection (NEW)
 
 ```markdown
-## Phase 0: Project Context Detection
+## Phase 0: Project Context Detection & Auto-Initialization
 
-**Purpose**: Detect project type and optional documentation
-**Time**: < 1 second
+**Purpose**: Detect project type, auto-generate CLAUDE.md if missing
+**Time**: < 1 second (if CLAUDE.md exists) or 1-3 minutes (auto-/init)
 
 **Steps**:
-1. Detect CLAUDE.md (if exists, read it)
+1. Detect CLAUDE.md (if exists, read it; if not, auto-run /init)
 2. Detect project type from code structure
 3. Detect build system from build files
 4. Store context for later phases
@@ -329,12 +338,13 @@ EOF
 
 **Q1: 是否需要/init步骤？**
 
-**A**: ❌ **不需要**
+**A**: ✅ **自动执行（v2.1），但非必需**
 
 **理由**：
-- Git clone的代码已经完整
-- 代码结构本身提供足够信息
-- 保持standalone，用户零配置
+- v2.1 自动在缺少 CLAUDE.md 时运行 /init（零配置）
+- /init 失败时优雅降级，继续代码分析
+- 用户无需手动运行 /init
+- Git clone的代码已包含足够信息用于基础分析
 
 **Q2: 是否需要CLAUDE.md判断？**
 
@@ -345,13 +355,17 @@ EOF
 if exists(CLAUDE.md):
   read it, use context  # Enhancement
 else:
-  continue analysis  # No dependency
+  auto_run_init()       # Auto-generate CLAUDE.md (v2.1)
+  if init_succeeded:
+    read CLAUDE.md      # Use enhanced context
+  else:
+    continue analysis   # Graceful fallback
 ```
 
 **关键原则**：
 1. ✅ **检测CLAUDE.md**：有就读取
-2. ✅ **不依赖CLAUDE.md**：没有也能分析
-3. ✅ **不创建CLAUDE.md**：不修改用户仓库
+2. ✅ **自动增强**：没有时自动 /init 生成（v2.1）
+3. ✅ **不依赖CLAUDE.md**：/init 失败也能分析
 4. ✅ **代码优先**：主要依赖代码结构本身
 
 ---
@@ -382,5 +396,5 @@ Add "Fresh Clone Handling" section.
 ---
 
 **Status**: Ready to implement and test
-**Key Decision**: No /init required, CLAUDE.md is optional enhancement
+**Key Decision**: Auto-/init enhancement with graceful fallback, CLAUDE.md is optional but auto-generated
 **Next**: Update skill and test on fresh Voxel-SLAM copy

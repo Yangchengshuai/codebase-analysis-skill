@@ -56,7 +56,7 @@ Each analysis module generates a corresponding `.md` file with:
 /codebase-analysis --module=StateEstimator
 ```
 
-## Methodology (8 Phases for Deep Analysis)
+## Methodology (9 Phases for Deep Analysis)
 
 ### Phase 0: Project Context Detection & Auto-Initialization (项目上下文检测与自动初始化) ⭐ NEW
 
@@ -316,33 +316,34 @@ Every analysis document **MUST** include:
 ## File System Structure
 
 ```
-codebase-analysis/
-├── skill.md                    # This file
+codebase-analysis-skill/
+├── SKILL.md                    # Claude Code native auto-discovery
+├── skill.md                    # OMC skill definition (this file)
 ├── WORKFLOW.md                 # ⭐ MANDATORY verification workflow (READ FIRST!)
 ├── README.md                   # Usage guide
 ├── Gotchas.md                  # Common pitfalls (MOST IMPORTANT)
-├── IMPROVEMENTS.md             # v2.0 improvements documentation
-├── templates/                  # Document templates
-│   ├── system_overview.md
-│   ├── data_structures.md
-│   ├── data_flow.md
-│   ├── algorithm_flow.md       # ⭐ Deep analysis template (v2.0)
-│   └── key_questions.md        # ⭐ Q&A template (v2.0)
-├── helpers/                    # Helper scripts
-│   ├── ascii_diagrams.sh
-│   ├── code_ref_formatter.sh
-│   ├── verification_checkpoint.sh
-│   └── toc_generator.sh
+├── CHANGELOG.md                # Version history
+├── CONTRIBUTING.md             # Contribution guide
+├── LICENSE                     # MIT License
+├── templates/                  # Document generation templates
+│   ├── system_overview.md      # Architecture overview
+│   ├── data_structures.md      # Data structure breakdown
+│   ├── algorithm_flow.md       # ⭐ Deep algorithm analysis (v2.0)
+│   └── key_questions.md        # ⭐ Q&A documentation (v2.0)
 ├── verification/               # Verification tools
-│   ├── verify_analysis.sh
 │   ├── verify_all_refs.sh      # ⭐ Automated [VERIFY:] tag checker
-│   ├── code_reference_checklist.md
-│   ├── hallucination_detection.md
-│   └── cross_reference_validator.md
-├── references/                 # Reference materials
-│   └── fastlivo2_style_guide.md
+│   ├── verify_analysis.sh      # Full analysis verification
+│   └── code_reference_checklist.md  # Manual verification checklist
+├── helpers/                    # Helper scripts
+│   ├── ascii_diagrams.sh       # ASCII diagram utilities
+│   └── code_ref_formatter.sh   # Code reference formatting
+├── docs/                       # Detailed methodology docs
+│   ├── ANALYSIS_FLOW.md        # Progressive refinement explained
+│   ├── INIT_GUIDE.md           # CLAUDE.md handling strategy
+│   ├── PHASE1_ENHANCED.md      # Phase 1 enhanced methodology
+│   └── PHASE4_GUIDE.md         # Algorithm deep dive guide
 └── examples/                   # Usage examples
-    └── analysis_workflow.md
+    └── example-output.md       # Sample output from Voxel-SLAM
 ```
 
 **Critical Files** (read in this order):

@@ -153,7 +153,7 @@ $ /codebase-analysis .
 **For detailed documentation**, see:
 - skill.md - Main skill definition
 - WORKFLOW.md - Verification workflow
-- AUTO_INIT_GUIDE.md - Auto-initialization feature
+- docs/INIT_GUIDE.md - Updated CLAUDE.md handling with auto-/init
 - INIT_GUIDE.md - Fresh clone handling
 - PHASE1_ENHANCED.md - Enhanced methodology
 - ANALYSIS_FLOW.md - Progressive refinement

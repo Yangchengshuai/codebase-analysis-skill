@@ -104,7 +104,7 @@ draw_table() {
         local cols=($row)
         local row_line="|"
         for ((i=0; i<col_count; i++)); do
-            local padding=$((widths[$i] - ${#cols[$i]})
+            local padding=$((widths[$i] - ${#cols[$i]}))
             row_line+=" ${cols[$i]}$(printf ' %.0s' $(seq 1 $padding))|"
         done
         echo "$row_line"

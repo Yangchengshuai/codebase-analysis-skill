@@ -15,7 +15,7 @@
 Asking Claude to "analyze my code" produces shallow, unreliable output. This skill solves that with:
 
 - **Anti-hallucination** — Every claim requires `[VERIFY: file:line]` code evidence. No exceptions.
-- **Structured methodology** — 9-phase progressive refinement (Phase 0–7) ensures nothing is missed.
+- **Structured methodology** — 9-phase progressive refinement (Phase 0–7, plus Phase 1.5 planning) ensures nothing is missed.
 - **Complete coverage** — Phase 1.5 planning guarantees all modules/threads get analyzed.
 - **Automated verification** — Built-in scripts validate every code reference after generation.
 
