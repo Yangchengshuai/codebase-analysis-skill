@@ -1,6 +1,6 @@
 ---
 name: codebase-analysis
-description: "Deep codebase analysis: data structures, data flow, algorithms, and key functions with rigorous code-based verification. Generates comprehensive .md documentation with ASCII diagrams. Auto-initializes projects with /init if CLAUDE.md is missing."
+description: "TRIGGER when user asks to analyze, document, understand, or review a codebase or code module. Use when user wants to: generate technical docs, trace data flow, analyze algorithms, document data structures, understand architecture, or review code logic. Triggers on: 'analyze code', 'codebase analysis', 'document this code', 'understand this project', 'trace data flow', '算法分析', '代码分析', '代码梳理', '数据结构分析', '技术文档'. DO NOT trigger for: simple file reading, single-function explanation, general coding questions."
 level: 3
 version: "2.1"
 triggers:
