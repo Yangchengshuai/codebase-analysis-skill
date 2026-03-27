@@ -9,15 +9,15 @@ Thumbs.db
 .idea/
 .vscode/
 
-# Analysis output (generated, not source)
-ANALYSIS_*.md
-ALGORITHM_*.md
-KEY_QUESTIONS_*.md
-PHASE4_PLAN.md
-TEST_PLAN.md
-*_QUALITY_REPORT.md
-*_COMPARISON.md
-*_IMPLEMENTATION.md
+# Analysis output (generated, not source — root level only)
+/ANALYSIS_*.md
+/ALGORITHM_*.md
+/KEY_QUESTIONS_*.md
+/PHASE4_PLAN.md
+/TEST_PLAN.md
+/*_QUALITY_REPORT.md
+/*_COMPARISON.md
+/*_IMPLEMENTATION.md
 
 # Verification temp files
 refs.txt
