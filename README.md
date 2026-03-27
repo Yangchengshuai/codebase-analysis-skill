@@ -25,28 +25,60 @@ Asking Claude to "analyze my code" produces shallow, unreliable output. This ski
 
 ### Prerequisites
 
-- [Claude Code](https://claude.ai/code) CLI
-- [oh-my-claudecode](https://github.com/yeachan-heo/oh-my-claudecode) (OMC), or manual installation
+- [Claude Code](https://claude.ai/code) CLI installed and running
 
 ### Install
 
+**Option A: Claude Code Native (No plugins needed)**
+
 ```bash
-# Option A: With OMC (Recommended)
+# Clone to Claude Code's global skills directory
+# SKILL.md (uppercase) is auto-detected by Claude Code
+git clone https://github.com/Yangchengshuai/codebase-analysis-skill.git \
+  ~/.claude/skills/codebase-analysis
+```
+
+Restart Claude Code. The skill is auto-triggered when you ask to analyze code.
+
+**Option B: With oh-my-claudecode (OMC)**
+
+```bash
+# Provides /codebase-analysis slash command
 git clone https://github.com/Yangchengshuai/codebase-analysis-skill.git \
   ~/.claude/plugins/marketplaces/omc/skills/codebase-analysis
-
-# Option B: Clone anywhere, then reference skill.md in your Claude Code config
-git clone https://github.com/Yangchengshuai/codebase-analysis-skill.git
 ```
+
+Restart Claude Code. Use `/codebase-analysis <path>` to trigger.
+
+**Option C: Project-Level (Per-Project)**
+
+```bash
+# Only active within a specific project
+mkdir -p your-project/.claude/skills
+git clone https://github.com/Yangchengshuai/codebase-analysis-skill.git \
+  your-project/.claude/skills/codebase-analysis
+```
+
+**Option D: One-Time Use (No installation)**
+
+No clone needed. Just paste the content of `skill.md` as your prompt to Claude Code.
 
 ### Usage
 
+After installation, trigger the analysis:
+
 ```bash
-# Analyze a project
+# Option A/C (Native): Use natural language — Claude auto-detects the skill
+> "Analyze the codebase at /path/to/project"
+> "帮我分析这个项目的代码架构"
+> "Document the algorithms in src/core/"
+
+# Option B (OMC): Use the slash command
 /codebase-analysis /path/to/project
 
-# Analyze a specific module
-/codebase-analysis src/core/StateEstimator
+# Any of these phrases trigger the skill:
+# "analyze code" / "codebase analysis" / "document this code"
+# "代码分析" / "代码梳理" / "数据结构分析" / "技术文档"
 ```
 
 ---
@@ -255,14 +287,33 @@ See [CONTRIBUTING.md](CONTRIBUTING.md) for details. Quick summary:
 
 ### 快速开始
 
+**方式 A：Claude Code 原生（无需插件）**
+
 ```bash
-# 安装
+git clone https://github.com/Yangchengshuai/codebase-analysis-skill.git \
+  ~/.claude/skills/codebase-analysis
+```
+
+重启 Claude Code，用自然语言即可触发（如"分析这个项目的代码架构"）。
+
+**方式 B：oh-my-claudecode (OMC)**
+
+```bash
 git clone https://github.com/Yangchengshuai/codebase-analysis-skill.git \
   ~/.claude/plugins/marketplaces/omc/skills/codebase-analysis
-
-# 使用
-/codebase-analysis /path/to/your/project
 ```
+
+重启 Claude Code，使用 `/codebase-analysis <path>` 触发。
+
+**方式 C：项目级别**
+
+```bash
+mkdir -p your-project/.claude/skills
+git clone https://github.com/Yangchengshuai/codebase-analysis-skill.git \
+  your-project/.claude/skills/codebase-analysis
+```
+
+**方式 D：一次性使用** — 直接将 `skill.md` 内容粘贴为提示词即可。
 
 ### 9 阶段方法论
 
